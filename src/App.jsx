@@ -8,14 +8,16 @@ import {
 } from 'react-icons/fa';
 import { SiJavascript, SiMongodb, SiMysql, SiFigma, SiKotlin, SiPhp, SiHtml5 } from 'react-icons/si';
 
+const baseUrl = import.meta.env.BASE_URL || '/';
+
 const profile = {
   name: 'Nethma Iddamalgoda',
   title: 'IT Undergraduate | Software Developer | Web Developer | QA Enthusiast',
   email: 'nethiddamalgoda@gmail.com',
   phone: '0701430448',
   location: 'Kandana, Sri Lanka',
-  photo: '/profile.png',
-  cv: '/Nethma-Iddamalgoda-CV.pdf',
+  photo: `${baseUrl}profile.png`,
+  cv: `${baseUrl}Nethma-Iddamalgoda-CV.pdf`,
   github: 'https://github.com/DewminiIddamalgoda',
   linkedin: 'https://www.linkedin.com/in/dewmini-iddamalgoda-b292aa374'
 };
@@ -116,7 +118,7 @@ function Navbar() {
 
   useEffect(() => {
     const onScroll = () => {
-      const current = navItems.findLast((item) => {
+      const current = [...navItems].reverse().find((item) => {
         const el = document.getElementById(item.toLowerCase());
         return el && window.scrollY >= el.offsetTop - 140;
       });
